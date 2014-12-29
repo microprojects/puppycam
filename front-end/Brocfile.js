@@ -4,6 +4,7 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
 app.import('bower_components/socket.io-client/socket.io.js');
+app.import('vendor/get-media.js');
 
 // Use `app.import` to add additional libraries to the generated
 // output files.
