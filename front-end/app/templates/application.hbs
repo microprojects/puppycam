@@ -1,5 +1,16 @@
-<h2 id="title">Welcome to Ember.js</h2>
+<h2 id="title">Welcome to Puppy Cam</h2>
 
-{{render 'host'}}
+{{#if host}}
+  {{render 'host'}}
+{{/if}}
+{{#if client}}
+  {{render 'client'}}
+{{/if}}
+{{#if notSelected}}
+  <h2>Choose Your Side</h2>
+  <button {{action 'startHost'}}>Host</button>
+  <button {{action 'startClient'}}>Client</button>
+{{/if}}
+
 
 {{outlet}}
