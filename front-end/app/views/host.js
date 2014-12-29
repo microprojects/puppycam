@@ -25,6 +25,10 @@ export default Ember.View.extend({
     this.get('videoEl').play();
   },
 
+  startTimer: function() {
+    Ember.run.later(this, this.takePicture, 5000);
+  },
+
   canPlay: function(ev) {
     var width = this.get('width'),
         height = this.get('height');
@@ -37,6 +41,8 @@ export default Ember.View.extend({
       this.get('canvasEl').setAttribute('height', height);
       this.set('streaming', true);
     }
+
+    this.startTimer();
   },
 
   takePicture: function () {
@@ -49,6 +55,8 @@ export default Ember.View.extend({
     var data = this.get('canvasEl').toDataURL('image/png');
 
     this.get('controller').send('sendPicture', data);
+
+    this.startTimer();
   },
 
   didInsertElement: function() {
@@ -63,10 +71,5 @@ export default Ember.View.extend({
     );
 
     this.get('videoEl').addEventListener('canplay', this.canPlay.bind(this), false);
-
-    this.get('startbuttonEl').addEventListener('click', function(ev) {
-      this.takePicture();
-      ev.preventDefault();
-    }.bind(this), false);
   }
 });
