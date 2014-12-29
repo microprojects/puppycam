@@ -1,7 +1,5 @@
-var index = require('./controllers/index');
-var users = require('./controllers/users');
+var catchall = require('./controllers/catchall');
 
 module.exports = function (app) {
-  app.use('/', index);
-  app.use('/users', users);
+  app.use('*', catchall);
 };
