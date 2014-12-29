@@ -7,6 +7,10 @@ export default Ember.Controller.extend({
     return !(this.get('host')||this.get('client'));
   }.property('host', 'client'),
 
+  init: function() {
+    this.get('socket.io');
+  },
+
   actions: {
     startClient: function() {
       this.set('client', true);
